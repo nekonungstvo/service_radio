@@ -4,7 +4,7 @@ services:
     build: .
     restart: always
     env_file:
-      - icecast_auth.env
+      - icecast_config.env
     ports:
       - 8080:8080
     networks:
@@ -15,7 +15,7 @@ services:
   radio-icecast:
     image: moul/icecast
     env_file:
-      - icecast_auth.env
+      - icecast_config.env
     ports:
     - 8000:8000
     networks:

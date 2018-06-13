@@ -7,11 +7,11 @@ import shouty
 from shouty.connection import Connection
 
 params = {
-    "host": "radio-icecast",
+    "host": os.environ.get("ICECAST_HOST", "radio-icecast"),
     "port": 8000,
     "format": shouty.Format.MP3,
     "user": "source",
-    "password": os.environ.get("ICECAST_SOURCE_PASSWORD") or ""
+    "password": os.environ.get("ICECAST_SOURCE_PASSWORD", "")
 }
 
 
