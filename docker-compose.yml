@@ -1,0 +1,26 @@
+version: '3'
+services:
+  radio:
+    build: .
+    restart: always
+    env_file:
+      - icecast_auth.env
+    ports:
+      - 8080:8080
+    networks:
+      - radio
+    environment:
+         - PYTHONUNBUFFERED=1
+
+  radio-icecast:
+    image: moul/icecast
+    env_file:
+      - icecast_auth.env
+    ports:
+    - 8000:8000
+    networks:
+      - radio
+
+networks:
+  radio:
+    driver: bridge
